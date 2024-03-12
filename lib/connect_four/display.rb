@@ -4,16 +4,20 @@ module ConnectFour
   module Display
     def print_grid
       6.times do |row|
-        print_row(row)
+        print_row(5 - row)
         row == 5 ? print_bottom : print_divider
       end
     end
 
+    private
+
     def print_row(row)
       box_vertical = "\u2502 "
-      value = "\u25cf" # placeholder white circle
       string = box_vertical
-      7.times { string += "#{value} #{box_vertical}" }
+      7.times do |column|
+        value = @grid[column][row] || " "
+        string += "#{value} #{box_vertical}"
+      end
 
       puts string
     end
