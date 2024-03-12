@@ -5,6 +5,9 @@ require_relative "connect_four/game"
 
 # "Connect Four" game, played in the terminal. (ConnectFour.new.play to begin)
 module ConnectFour
+  WHITE_TOKEN = "\u25cf"
+  BLACK_TOKEN = "\u25cb"
+
   def self.new
     Game.new
   end
