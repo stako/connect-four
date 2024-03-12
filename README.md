@@ -1,0 +1,2 @@
+# Connect Four
+Ruby implementation of the classic game ["Connect Four"](https://en.wikipedia.org/wiki/Connect_Four). Part of [The Odin Project](https://www.theodinproject.com/lessons/ruby-connect-four).
