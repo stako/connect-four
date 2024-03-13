@@ -6,6 +6,16 @@ module ConnectFour
 
     def initialize
       @grid = Array.new(7) { Array.new(6) }
+      @players = [WHITE_TOKEN, BLACK_TOKEN]
+      @current_player = 0
+    end
+
+    def player_choice
+      loop do
+        choice = gets.chomp.gsub(/[^0-9]/, "")
+        choice = choice.to_i unless choice.empty?
+        return choice if choice.between?(0, 6)
+      end
     end
 
     def full_grid?

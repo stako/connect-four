@@ -91,4 +91,36 @@ describe ConnectFour do
       expect(game.winner).to be_nil
     end
   end
+
+  describe "#player_choice" do
+    context "when the input is valid" do
+      before do
+        allow(game).to receive(:gets).and_return("5")
+      end
+
+      it "sends a message to get user input once" do
+        expect(game).to receive(:gets).once
+        game.player_choice
+      end
+
+      it "returns the valid input as an integer" do
+        expect(game.player_choice).to eq(5)
+      end
+    end
+
+    context "when the first input is invalid, and second is valid" do
+      before do
+        allow(game).to receive(:gets).and_return("8", "5")
+      end
+
+      it "sends a message to get user input at least twice" do
+        expect(game).to receive(:gets).at_least(:twice)
+        game.player_choice
+      end
+
+      it "returns the valid input as an integer" do
+        expect(game.player_choice).to eq(5)
+      end
+    end
+  end
 end
