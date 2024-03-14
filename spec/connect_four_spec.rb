@@ -6,14 +6,14 @@ describe ConnectFour do
   subject(:game) { described_class.new }
   let(:grid) { game.instance_variable_get(:@grid) }
 
-  describe "#full_grid?" do
+  describe "#grid_full?" do
     it "returns true if grid is completely filled" do
       grid.each { |column| column.map! { true } }
-      expect(game.full_grid?).to be true
+      expect(game.grid_full?).to be true
     end
 
     it "returns false if grid has any empty slots" do
-      expect(game.full_grid?).to be false
+      expect(game.grid_full?).to be false
     end
   end
 

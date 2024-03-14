@@ -23,7 +23,7 @@ module ConnectFour
       @player = @player == WHITE_TOKEN ? BLACK_TOKEN : WHITE_TOKEN
     end
 
-    def full_grid?
+    def grid_full?
       @grid.each { |column| return true unless column.any?(nil) }
       false
     end
