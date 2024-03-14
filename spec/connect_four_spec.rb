@@ -21,6 +21,13 @@ describe ConnectFour do
         expect(game.grid_full?).to be false
       end
     end
+
+    context "if only one column is full" do
+      it "returns false" do
+        6.times { grid[0] << white }
+        expect(game.grid_full?).to be false
+      end
+    end
   end
 
   describe "#column_full?(column)" do
