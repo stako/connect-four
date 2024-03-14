@@ -11,7 +11,7 @@ describe ConnectFour do
   describe "#grid_full?" do
     context "if the grid is full" do
       it "returns true" do
-        grid.each { |column| column.map! { true } }
+        grid.each { |column| 6.times { column << white } }
         expect(game.grid_full?).to be true
       end
     end

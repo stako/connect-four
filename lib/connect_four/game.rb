@@ -7,7 +7,7 @@ module ConnectFour
     attr_reader :player
 
     def initialize
-      @grid = Array.new(7) { Array.new(6) }
+      @grid = Array.new(7) { [] }
       @player = WHITE_TOKEN
     end
 
@@ -24,12 +24,12 @@ module ConnectFour
     end
 
     def grid_full?
-      @grid.each { |column| return true unless column.any?(nil) }
+      @grid.each { |column| return true unless column.length < 6 }
       false
     end
 
     def column_full?(column)
-      @grid[column].none?(nil)
+      @grid[column].length >= 6
     end
 
     def winner
