@@ -4,10 +4,11 @@ module ConnectFour
   class Game
     include Display
 
+    attr_reader :player
+
     def initialize
       @grid = Array.new(7) { Array.new(6) }
-      @players = [WHITE_TOKEN, BLACK_TOKEN]
-      @current_player = 0
+      @player = WHITE_TOKEN
     end
 
     def player_choice
@@ -16,6 +17,10 @@ module ConnectFour
 
       choice = choice.to_i
       choice.between?(0, 6) ? choice : nil
+    end
+
+    def switch_players
+      @player = @player == WHITE_TOKEN ? BLACK_TOKEN : WHITE_TOKEN
     end
 
     def full_grid?

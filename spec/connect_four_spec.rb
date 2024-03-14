@@ -117,4 +117,19 @@ describe ConnectFour do
       end
     end
   end
+
+  describe "#switch_players" do
+    white = described_class::WHITE_TOKEN
+    black = described_class::BLACK_TOKEN
+
+    it "switches player from #{white} to #{black}" do
+      game.switch_players unless game.player == black
+      expect(game.player).to eq(black)
+    end
+
+    it "switches player from #{black} to #{white}" do
+      game.switch_players unless game.player == white
+      expect(game.player).to eq(white)
+    end
+  end
 end
