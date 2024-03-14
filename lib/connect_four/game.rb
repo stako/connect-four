@@ -24,7 +24,10 @@ module ConnectFour
     end
 
     def insert_token(token, column)
-      @grid[column] << token unless column_full?(column)
+      return false if column_full?(column)
+
+      @grid[column] << token
+      true
     end
 
     def grid_full?
