@@ -5,6 +5,8 @@ require_relative "../lib/connect_four"
 describe ConnectFour do
   subject(:game) { described_class.new }
   let(:grid) { game.instance_variable_get(:@grid) }
+  white = described_class::WHITE_TOKEN
+  black = described_class::BLACK_TOKEN
 
   describe "#grid_full?" do
     it "returns true if grid is completely filled" do
@@ -20,7 +22,6 @@ describe ConnectFour do
   describe "#column_full?(column)" do
     context "if the given column is full" do
       it "returns true" do
-        white = described_class::WHITE_TOKEN
         6.times { |slot| grid[2][slot] = white }
         expect(game.column_full?(2)).to be true
       end
@@ -34,9 +35,6 @@ describe ConnectFour do
   end
 
   describe "#winner" do
-    white = described_class::WHITE_TOKEN
-    black = described_class::BLACK_TOKEN
-
     it "returns #{white} when #{white} has 4 in a row vertically" do
       4.times { |i| grid[0][i] = white }
       expect(game.winner).to eq(white)
@@ -135,9 +133,6 @@ describe ConnectFour do
   end
 
   describe "#switch_players" do
-    white = described_class::WHITE_TOKEN
-    black = described_class::BLACK_TOKEN
-
     it "switches player from #{white} to #{black}" do
       game.switch_players unless game.player == black
       expect(game.player).to eq(black)
