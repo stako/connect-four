@@ -23,6 +23,10 @@ module ConnectFour
       @player = @player == WHITE_TOKEN ? BLACK_TOKEN : WHITE_TOKEN
     end
 
+    def insert_token(token, column)
+      @grid[column] << token unless column_full?(column)
+    end
+
     def grid_full?
       @grid.each { |column| return true unless column.length < 6 }
       false

@@ -147,4 +147,24 @@ describe ConnectFour do
       expect(game.player).to eq(white)
     end
   end
+
+  describe "#insert_token(token, column)" do
+    context "if the given column is full" do
+      it "does NOT insert a token into the column" do
+        column = 2
+        6.times { |slot| grid[column][slot] = white }
+        game.insert_token(white, column)
+        expect(grid[column].length).not_to be > 6
+      end
+    end
+
+    context "if the given column is NOT full" do
+      it "inserts a token into the column" do
+        column = 2
+        length = grid[column].length
+        game.insert_token(white, column)
+        expect(grid[column].length).to eq(length + 1)
+      end
+    end
+  end
 end
