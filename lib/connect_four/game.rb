@@ -28,8 +28,7 @@ module ConnectFour
     end
 
     def grid_full?
-      @grid.each { |column| return true unless column.length < 6 }
-      false
+      @grid.all? { |column| column.length >= 6 }
     end
 
     def column_full?(column)
