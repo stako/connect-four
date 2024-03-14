@@ -9,13 +9,17 @@ describe ConnectFour do
   black = described_class::BLACK_TOKEN
 
   describe "#grid_full?" do
-    it "returns true if grid is completely filled" do
-      grid.each { |column| column.map! { true } }
-      expect(game.grid_full?).to be true
+    context "if the grid is full" do
+      it "returns true" do
+        grid.each { |column| column.map! { true } }
+        expect(game.grid_full?).to be true
+      end
     end
 
-    it "returns false if grid has any empty slots" do
-      expect(game.grid_full?).to be false
+    context "if the grid is not full" do
+      it "returns false" do
+        expect(game.grid_full?).to be false
+      end
     end
   end
 
