@@ -17,6 +17,22 @@ describe ConnectFour do
     end
   end
 
+  describe "#column_full?(column)" do
+    context "if the given column is full" do
+      it "returns true" do
+        white = described_class::WHITE_TOKEN
+        6.times { |slot| grid[2][slot] = white }
+        expect(game.column_full?(2)).to be true
+      end
+    end
+
+    context "if the given column is not full" do
+      it "returns false" do
+        expect(game.column_full?(2)).to be false
+      end
+    end
+  end
+
   describe "#winner" do
     white = described_class::WHITE_TOKEN
     black = described_class::BLACK_TOKEN

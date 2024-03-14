@@ -28,6 +28,10 @@ module ConnectFour
       false
     end
 
+    def column_full?(column)
+      @grid[column].none?(nil)
+    end
+
     def winner
       @grid.each_with_index do |column, x|
         column.each_index do |y|
