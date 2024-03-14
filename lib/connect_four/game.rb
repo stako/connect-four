@@ -11,11 +11,11 @@ module ConnectFour
     end
 
     def player_choice
-      loop do
-        choice = gets.chomp.gsub(/[^0-9]/, "")
-        choice = choice.to_i unless choice.empty?
-        return choice if choice.between?(0, 6)
-      end
+      choice = gets[/^\d/]
+      return if choice.nil?
+
+      choice = choice.to_i
+      choice.between?(0, 6) ? choice : nil
     end
 
     def full_grid?
