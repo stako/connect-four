@@ -59,6 +59,8 @@ module ConnectFour
         new_x = x + dx
         new_y = y + dy
         while combo < 4 && @grid[new_x] && @grid[new_x][new_y] == token
+          break if new_y.negative?
+
           combo += 1
           new_x += dx
           new_y += dy
