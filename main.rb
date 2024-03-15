@@ -17,7 +17,7 @@ def play_round
     puts valid_input ? "" : "Error: Invalid column"
     print "Player #{@game.player} - Enter a column #: "
     column = @game.player_choice
-    valid_input = column && @game.insert_token(@game.player, column) ? true : false
+    valid_input = column && @game.insert_token(@game.player, column)
     break if valid_input
   end
 
